@@ -25,7 +25,7 @@ public partial class Request
 
     public int ClientId { get; set; }
 
-    public virtual Client Client { get; set; } = null!;
+    public virtual Client? Client { get; set; } = null!;
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
@@ -37,5 +37,5 @@ public partial class Request
 
     public virtual RequestStatus? RequestStatus { get; set; }
 
-    public virtual TechType TechType { get; set; } = null!;
+    public virtual TechType? TechType { get; set; } = null!;
 }

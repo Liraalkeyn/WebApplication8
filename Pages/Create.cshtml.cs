@@ -21,12 +21,16 @@ namespace WebApplication8.Pages
 
         public IActionResult OnGet()
         {
-        ViewData["RequestId"] = new SelectList(_context.Requests, "RequestId", "RequestId");
+        ViewData["ClientId"] = new SelectList(_context.Clients, "ClientId", "ClientId");
+        ViewData["MasterId"] = new SelectList(_context.Masters, "MasterId", "MasterId");
+        ViewData["RepairPartsId"] = new SelectList(_context.RepairParts, "RepairPartId", "RepairPartId");
+        ViewData["RequestStatusId"] = new SelectList(_context.RequestStatuses, "RequestStatusId", "RequestStatusId");
+        ViewData["TechTypeId"] = new SelectList(_context.TechTypes, "TechTypeId", "TechTypeId");
             return Page();
         }
 
         [BindProperty]
-        public Feedback Feedback { get; set; } = default!;
+        public Request Request { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +40,7 @@ namespace WebApplication8.Pages
                 return Page();
             }
 
-            _context.Feedbacks.Add(Feedback);
+            _context.Requests.Add(Request);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

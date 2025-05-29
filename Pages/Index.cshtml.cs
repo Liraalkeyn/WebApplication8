@@ -19,12 +19,16 @@ namespace WebApplication8.Pages
             _context = context;
         }
 
-        public IList<Feedback> Feedback { get;set; } = default!;
+        public IList<Request> Request { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Feedback = await _context.Feedbacks
-                .Include(f => f.Request).ToListAsync();
+            Request = await _context.Requests
+                .Include(r => r.Client)
+                .Include(r => r.Master)
+                .Include(r => r.RepairParts)
+                .Include(r => r.RequestStatus)
+                .Include(r => r.TechType).ToListAsync();
         }
     }
 }

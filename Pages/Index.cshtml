@@ -14,27 +14,69 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Feedback[0].Message)
+                @Html.DisplayNameFor(model => model.Request[0].StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Feedback[0].Request)
+                @Html.DisplayNameFor(model => model.Request[0].ClimateTechModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].ProblemDescryption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].CompletionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Master)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].RepairParts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].RequestStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].TechType)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Feedback) {
+@foreach (var item in Model.Request) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Message)
+                @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Request.RequestId)
+                @Html.DisplayFor(modelItem => item.ClimateTechModel)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.FeedbackId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FeedbackId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FeedbackId">Delete</a>
+                @Html.DisplayFor(modelItem => item.ProblemDescryption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.ClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Master.MasterId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairParts.RepairPartId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestStatus.RequestStatusId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechType.TechTypeId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RequestId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RequestId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RequestId">Delete</a>
             </td>
         </tr>
 }

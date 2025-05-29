@@ -7,31 +7,60 @@
         
         <h1>Create</h1>
         
-    <h4>Feedback</h4>
+    <h4>Request</h4>
     <hr />
     <div class="row">
     <div class="col-md-4">
     <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Feedback.FeedbackId" class="control-label"></label>
-                <input asp-for="Feedback.FeedbackId" class="form-control" />
-                <span asp-validation-for="Feedback.FeedbackId" class="text-danger"></span>
+                <label asp-for="Request.RequestId" class="control-label"></label>
+                <input asp-for="Request.RequestId" class="form-control" />
+                <span asp-validation-for="Request.RequestId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Feedback.RequestId" class="control-label"></label>
-                <select asp-for="Feedback.RequestId" class ="form-control" asp-items="ViewBag.RequestId"></select>
+                <label asp-for="Request.StartDate" class="control-label"></label>
+                <input asp-for="Request.StartDate" class="form-control" />
+                <span asp-validation-for="Request.StartDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Feedback.Message" class="control-label"></label>
-                <input asp-for="Feedback.Message" class="form-control" />
-                <span asp-validation-for="Feedback.Message" class="text-danger"></span>
+                <label asp-for="Request.TechTypeId" class="control-label"></label>
+                <select asp-for="Request.TechTypeId" class ="form-control" asp-items="ViewBag.TechTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.ClimateTechModel" class="control-label"></label>
+                <input asp-for="Request.ClimateTechModel" class="form-control" />
+                <span asp-validation-for="Request.ClimateTechModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.ProblemDescryption" class="control-label"></label>
+                <input asp-for="Request.ProblemDescryption" class="form-control" />
+                <span asp-validation-for="Request.ProblemDescryption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.RequestStatusId" class="control-label"></label>
+                <select asp-for="Request.RequestStatusId" class ="form-control" asp-items="ViewBag.RequestStatusId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.CompletionDate" class="control-label"></label>
+                <input asp-for="Request.CompletionDate" class="form-control" />
+                <span asp-validation-for="Request.CompletionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.RepairPartsId" class="control-label"></label>
+                <select asp-for="Request.RepairPartsId" class ="form-control" asp-items="ViewBag.RepairPartsId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.MasterId" class="control-label"></label>
+                <select asp-for="Request.MasterId" class ="form-control" asp-items="ViewBag.MasterId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Request.ClientId" class="control-label"></label>
+                <select asp-for="Request.ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-            <div asp-validation-summary="All"></div>
-
         </form>
     </div>
 </div>
