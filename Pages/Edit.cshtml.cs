@@ -21,7 +21,7 @@ namespace WebApplication8.Pages
         }
 
         [BindProperty]
-        public Request Request { get; set; } = default!;
+        public Feedback Feedback { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,17 +30,13 @@ namespace WebApplication8.Pages
                 return NotFound();
             }
 
-            var request =  await _context.Requests.FirstOrDefaultAsync(m => m.RequestId == id);
-            if (request == null)
+            var feedback =  await _context.Feedbacks.FirstOrDefaultAsync(m => m.FeedbackId == id);
+            if (feedback == null)
             {
                 return NotFound();
             }
-            Request = request;
-           ViewData["ClientId"] = new SelectList(_context.Clients, "ClientId", "ClientId");
-           ViewData["MasterId"] = new SelectList(_context.Masters, "MasterId", "MasterId");
-           ViewData["RepairPartsId"] = new SelectList(_context.RepairParts, "RepairPartId", "RepairPartId");
-           ViewData["RequestStatusId"] = new SelectList(_context.RequestStatuses, "RequestStatusId", "RequestStatusId");
-           ViewData["TechTypeId"] = new SelectList(_context.TechTypes, "TechTypeId", "TechTypeId");
+            Feedback = feedback;
+           ViewData["RequestId"] = new SelectList(_context.Requests, "RequestId", "RequestId");
             return Page();
         }
 
@@ -53,7 +49,7 @@ namespace WebApplication8.Pages
                 return Page();
             }
 
-            _context.Attach(Request).State = EntityState.Modified;
+            _context.Attach(Feedback).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +57,7 @@ namespace WebApplication8.Pages
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RequestExists(Request.RequestId))
+                if (!FeedbackExists(Feedback.FeedbackId))
                 {
                     return NotFound();
                 }
@@ -74,9 +70,9 @@ namespace WebApplication8.Pages
             return RedirectToPage("./Index");
         }
 
-        private bool RequestExists(int id)
+        private bool FeedbackExists(int id)
         {
-            return _context.Requests.Any(e => e.RequestId == id);
+            return _context.Feedbacks.Any(e => e.FeedbackId == id);
         }
     }
 }

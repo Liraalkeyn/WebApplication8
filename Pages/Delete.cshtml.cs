@@ -20,7 +20,7 @@ namespace WebApplication8.Pages
         }
 
         [BindProperty]
-        public Request Request { get; set; } = default!;
+        public Feedback Feedback { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,11 +29,11 @@ namespace WebApplication8.Pages
                 return NotFound();
             }
 
-            var request = await _context.Requests.FirstOrDefaultAsync(m => m.RequestId == id);
+            var feedback = await _context.Feedbacks.FirstOrDefaultAsync(m => m.FeedbackId == id);
 
-            if (request is not null)
+            if (feedback is not null)
             {
-                Request = request;
+                Feedback = feedback;
 
                 return Page();
             }
@@ -48,11 +48,11 @@ namespace WebApplication8.Pages
                 return NotFound();
             }
 
-            var request = await _context.Requests.FindAsync(id);
-            if (request != null)
+            var feedback = await _context.Feedbacks.FindAsync(id);
+            if (feedback != null)
             {
-                Request = request;
-                _context.Requests.Remove(Request);
+                Feedback = feedback;
+                _context.Feedbacks.Remove(Feedback);
                 await _context.SaveChangesAsync();
             }
 

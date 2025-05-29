@@ -11,5 +11,5 @@ public partial class Feedback
 
     public string Message { get; set; } = null!;
 
-    public virtual Request Request { get; set; } = null!;
+    public virtual Request? Request { get; set; } = null!;
 }

@@ -407,3 +407,4 @@ C:\Users\Lemon\source\repos\WebApplication8\WebApplication8\obj\Debug\net9.0\com
 C:\Users\Lemon\source\repos\WebApplication8\WebApplication8\obj\Debug\net9.0\compressed\yfc7ypekbg-mlv21k5csn.gz
 C:\Users\Lemon\source\repos\WebApplication8\WebApplication8\obj\Debug\net9.0\WebAppli.328F4B1C.Up2Date
 C:\Users\Lemon\source\repos\WebApplication8\WebApplication8\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\Lemon\source\repos\WebApplication8\WebApplication8\obj\Debug\net9.0\WebApplication8.sourcelink.json
