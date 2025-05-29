@@ -1,0 +1,84 @@
+﻿@page
+@model WebApplication8.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].ClimateTechModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].ProblemDescryption)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].CompletionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].Master)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].RepairParts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].RequestStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Request[0].TechType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Request) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClimateTechModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProblemDescryption)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.ClientId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Master.MasterId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairParts.RepairPartId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestStatus.RequestStatusId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechType.TechTypeId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RequestId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RequestId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RequestId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

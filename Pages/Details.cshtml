@@ -1,0 +1,73 @@
+﻿@page
+@model WebApplication8.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.ClimateTechModel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.ClimateTechModel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.ProblemDescryption)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.ProblemDescryption)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.CompletionDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.CompletionDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.Client)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.Client.ClientId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.Master)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.Master.MasterId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.RepairParts)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.RepairParts.RepairPartId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.RequestStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.RequestStatus.RequestStatusId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Request.TechType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Request.TechType.TechTypeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Request.RequestId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

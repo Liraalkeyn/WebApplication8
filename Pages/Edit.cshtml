@@ -1,0 +1,84 @@
+﻿@page
+@model WebApplication8.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Request</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Request.RequestId" />
+            <div class="form-group">
+                
+                <label asp-for="Request.StartDate" class="control-label"></label>
+                <input asp-for="Request.StartDate" class="form-control" />
+                <span asp-validation-for="Request.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.TechTypeId" class="control-label"></label>
+                <select asp-for="Request.TechTypeId" class="form-control" asp-items="ViewBag.TechTypeId"></select>
+                <span asp-validation-for="Request.TechTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.ClimateTechModel" class="control-label"></label>
+                <input asp-for="Request.ClimateTechModel" class="form-control" />
+                <span asp-validation-for="Request.ClimateTechModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.ProblemDescryption" class="control-label"></label>
+                <input asp-for="Request.ProblemDescryption" class="form-control" />
+                <span asp-validation-for="Request.ProblemDescryption" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.RequestStatusId" class="control-label"></label>
+                <select asp-for="Request.RequestStatusId" class="form-control" asp-items="ViewBag.RequestStatusId"></select>
+                <span asp-validation-for="Request.RequestStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.CompletionDate" class="control-label"></label>
+                <input asp-for="Request.CompletionDate" class="form-control" />
+                <span asp-validation-for="Request.CompletionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.RepairPartsId" class="control-label"></label>
+                <select asp-for="Request.RepairPartsId" class="form-control" asp-items="ViewBag.RepairPartsId"></select>
+                <span asp-validation-for="Request.RepairPartsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.MasterId" class="control-label"></label>
+                <select asp-for="Request.MasterId" class="form-control" asp-items="ViewBag.MasterId"></select>
+                <span asp-validation-for="Request.MasterId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Request.ClientId" class="control-label"></label>
+                <select asp-for="Request.ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                <span asp-validation-for="Request.ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
