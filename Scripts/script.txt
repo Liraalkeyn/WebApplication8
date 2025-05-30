@@ -1,0 +1,222 @@
+USE [database1]
+GO
+/****** Object:  Table [dbo].[client]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[client](
+	[clientID] [int] NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[surname] [nvarchar](50) NOT NULL,
+	[patronymic] [nvarchar](50) NULL,
+	[phone] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_client] PRIMARY KEY CLUSTERED 
+(
+	[clientID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[feedback]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[feedback](
+	[feedbackID] [int] NOT NULL,
+	[requestID] [int] NOT NULL,
+	[message] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_feedback] PRIMARY KEY CLUSTERED 
+(
+	[feedbackID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[master]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[master](
+	[masterID] [int] NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[surname] [nvarchar](50) NOT NULL,
+	[patronymic] [nvarchar](50) NULL,
+	[phone] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_master] PRIMARY KEY CLUSTERED 
+(
+	[masterID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[message]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[message](
+	[messageID] [int] NOT NULL,
+	[text] [nvarchar](128) NOT NULL,
+	[masterID] [int] NOT NULL,
+	[requestID] [int] NOT NULL,
+ CONSTRAINT [PK_message] PRIMARY KEY CLUSTERED 
+(
+	[messageID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[repairPart]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[repairPart](
+	[repairPartID] [int] NOT NULL,
+	[masterID] [int] NOT NULL,
+	[techTypeID] [int] NOT NULL,
+	[repair] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_repairPart] PRIMARY KEY CLUSTERED 
+(
+	[repairPartID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[request]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[request](
+	[requestID] [int] NOT NULL,
+	[startDate] [date] NOT NULL,
+	[techTypeID] [int] NOT NULL,
+	[climateTechModel] [nvarchar](max) NOT NULL,
+	[problemDescryption] [nvarchar](max) NOT NULL,
+	[requestStatusID] [int] NULL,
+	[completionDate] [date] NULL,
+	[repairPartsID] [int] NULL,
+	[masterID] [int] NULL,
+	[clientID] [int] NOT NULL,
+ CONSTRAINT [PK_request] PRIMARY KEY CLUSTERED 
+(
+	[requestID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[requestStatus]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[requestStatus](
+	[requestStatusID] [int] NOT NULL,
+	[message] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_requestStatus] PRIMARY KEY CLUSTERED 
+(
+	[requestStatusID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[techType]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[techType](
+	[techTypeID] [int] NOT NULL,
+	[climateTechType] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_techType] PRIMARY KEY CLUSTERED 
+(
+	[techTypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[typeUser]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[typeUser](
+	[typeUserID] [int] NOT NULL,
+	[nameOfType] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_typeUser] PRIMARY KEY CLUSTERED 
+(
+	[typeUserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[user]    Script Date: 30/05/2025 3:18:33 am ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[user](
+	[userID] [int] NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[surname] [nvarchar](50) NOT NULL,
+	[patronymic] [nvarchar](50) NULL,
+	[login] [nvarchar](50) NOT NULL,
+	[password] [nvarchar](50) NOT NULL,
+	[typeUserID] [int] NOT NULL,
+	[phone] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_user] PRIMARY KEY CLUSTERED 
+(
+	[userID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[feedback]  WITH CHECK ADD  CONSTRAINT [FK_feedback_request] FOREIGN KEY([requestID])
+REFERENCES [dbo].[request] ([requestID])
+GO
+ALTER TABLE [dbo].[feedback] CHECK CONSTRAINT [FK_feedback_request]
+GO
+ALTER TABLE [dbo].[message]  WITH CHECK ADD  CONSTRAINT [FK_message_master] FOREIGN KEY([masterID])
+REFERENCES [dbo].[master] ([masterID])
+GO
+ALTER TABLE [dbo].[message] CHECK CONSTRAINT [FK_message_master]
+GO
+ALTER TABLE [dbo].[message]  WITH CHECK ADD  CONSTRAINT [FK_message_request] FOREIGN KEY([requestID])
+REFERENCES [dbo].[request] ([requestID])
+GO
+ALTER TABLE [dbo].[message] CHECK CONSTRAINT [FK_message_request]
+GO
+ALTER TABLE [dbo].[repairPart]  WITH CHECK ADD  CONSTRAINT [FK_repairPart_master] FOREIGN KEY([masterID])
+REFERENCES [dbo].[master] ([masterID])
+GO
+ALTER TABLE [dbo].[repairPart] CHECK CONSTRAINT [FK_repairPart_master]
+GO
+ALTER TABLE [dbo].[repairPart]  WITH CHECK ADD  CONSTRAINT [FK_repairPart_techType] FOREIGN KEY([techTypeID])
+REFERENCES [dbo].[techType] ([techTypeID])
+GO
+ALTER TABLE [dbo].[repairPart] CHECK CONSTRAINT [FK_repairPart_techType]
+GO
+ALTER TABLE [dbo].[request]  WITH CHECK ADD  CONSTRAINT [FK_request_client1] FOREIGN KEY([clientID])
+REFERENCES [dbo].[client] ([clientID])
+GO
+ALTER TABLE [dbo].[request] CHECK CONSTRAINT [FK_request_client1]
+GO
+ALTER TABLE [dbo].[request]  WITH CHECK ADD  CONSTRAINT [FK_request_master] FOREIGN KEY([masterID])
+REFERENCES [dbo].[master] ([masterID])
+GO
+ALTER TABLE [dbo].[request] CHECK CONSTRAINT [FK_request_master]
+GO
+ALTER TABLE [dbo].[request]  WITH CHECK ADD  CONSTRAINT [FK_request_repairPart] FOREIGN KEY([repairPartsID])
+REFERENCES [dbo].[repairPart] ([repairPartID])
+GO
+ALTER TABLE [dbo].[request] CHECK CONSTRAINT [FK_request_repairPart]
+GO
+ALTER TABLE [dbo].[request]  WITH CHECK ADD  CONSTRAINT [FK_request_requestStatus] FOREIGN KEY([requestStatusID])
+REFERENCES [dbo].[requestStatus] ([requestStatusID])
+GO
+ALTER TABLE [dbo].[request] CHECK CONSTRAINT [FK_request_requestStatus]
+GO
+ALTER TABLE [dbo].[request]  WITH CHECK ADD  CONSTRAINT [FK_request_techType] FOREIGN KEY([techTypeID])
+REFERENCES [dbo].[techType] ([techTypeID])
+GO
+ALTER TABLE [dbo].[request] CHECK CONSTRAINT [FK_request_techType]
+GO
+ALTER TABLE [dbo].[user]  WITH CHECK ADD  CONSTRAINT [FK_user_typeUser] FOREIGN KEY([typeUserID])
+REFERENCES [dbo].[typeUser] ([typeUserID])
+GO
+ALTER TABLE [dbo].[user] CHECK CONSTRAINT [FK_user_typeUser]
+GO

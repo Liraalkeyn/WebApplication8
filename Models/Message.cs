@@ -13,7 +13,7 @@ public partial class Message
 
     public int RequestId { get; set; }
 
-    public virtual Master Master { get; set; } = null!;
+    public virtual Master? Master { get; set; } = null!;
 
-    public virtual Request Request { get; set; } = null!;
+    public virtual Request? Request { get; set; } = null!;
 }

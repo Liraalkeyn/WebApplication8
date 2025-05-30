@@ -17,5 +17,5 @@ public partial class RepairPart
 
     public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
 
-    public virtual TechType TechType { get; set; } = null!;
+    public virtual TechType? TechType { get; set; } = null!;
 }

@@ -21,5 +21,5 @@ public partial class User
 
     public string Phone { get; set; } = null!;
 
-    public virtual TypeUser TypeUser { get; set; } = null!;
+    public virtual TypeUser? TypeUser { get; set; } = null!;
 }
